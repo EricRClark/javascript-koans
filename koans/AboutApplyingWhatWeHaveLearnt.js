@@ -32,7 +32,7 @@ describe("About Applying What We Have Learnt", function() {
         }
     }
 
-    expect(productsICanEat.length).toBe(FILL_ME_IN);
+    expect(productsICanEat.length).toBe(1);
   });
 
   it("given I'm allergic to nuts and hate mushrooms, it should find a pizza I can eat (functional)", function () {
@@ -40,14 +40,28 @@ describe("About Applying What We Have Learnt", function() {
       var productsICanEat = [];
 
       /* solve using filter() & all() / any() */
+_(products).chain()
+      .filter(function(product)){ /*filter out nuts*/
+return !product.containsNuts;
+})
+.filter(function(noNuts)){
+  return noNuts.ingredients.indexOf('mushrooms') === -1;
+})
+.any(functiona(el)) {
+  return !el.ingredients.includes('mushrooms') /*If they don't contain shrooms*/
+}
+.each(function (noNutsnoShrooms);
+})
+.value();
+      /*productsICanEat = _.reject(products, function(product){ return _.include(product.ingredients, "mushrooms") || product.containsNuts === true});
 
-      expect(productsICanEat.length).toBe(FILL_ME_IN);
+    */  expect(productsICanEat.length).toBe();
   });
 
   /*********************************************************************************/
 
   it("should add all the natural numbers below 1000 that are multiples of 3 or 5 (imperative)", function () {
-
+/* looping 1 thru 100 */
     var sum = 0;
     for(var i=1; i<1000; i+=1) {
       if (i % 3 === 0 || i % 5 === 0) {
@@ -55,12 +69,17 @@ describe("About Applying What We Have Learnt", function() {
       }
     }
 
-    expect(sum).toBe(FILL_ME_IN);
+    expect(sum).toBe();
   });
 
   it("should add all the natural numbers below 1000 that are multiples of 3 or 5 (functional)", function () {
-
-    var sum = FILL_ME_IN;    /* try chaining range() and reduce() */
+(_.range(1,1000)).chain()
+.reduce(function(accumulator, element){
+  .
+    return accumulator += element;
+},0)/*always put something here*/
+.value();
+    var sum = ;    /* try chaining range() and reduce() */
 
     expect(233168).toBe(FILL_ME_IN);
   });
@@ -74,6 +93,20 @@ describe("About Applying What We Have Learnt", function() {
             ingredientCount[products[i].ingredients[j]] = (ingredientCount[products[i].ingredients[j]] || 0) + 1;
         }
     }
+/* want to count # of times ingredients occur
+want initialize every time new ingredient gets introduced
+var ingredients =products.map(function(el)){
+return el.ingredients
+})
+so we want to use _.flatten (ingredients) to just get those
+products.reduce(function(accu, element) {
+if (accum[el]){            (accumulator already has element inside object)
+accm [el] += 1;
+
+}else {
+acc [el] = 1;
+}return acc;
+},{})*/
 
     expect(ingredientCount['mushrooms']).toBe(FILL_ME_IN);
   });
@@ -82,8 +115,16 @@ describe("About Applying What We Have Learnt", function() {
     var ingredientCount = { "{ingredient name}": 0 };
 
     /* chain() together map(), flatten() and reduce() */
+    _.chain(products)
+     .map(function(product){ return product.ingredients; })
+     .flatten()
+     .each(function(ingredient) {
+       ingredientCount[ingredient] = (ingredientCount[ingredient] || 0) + 1;
+});
 
-    expect(ingredientCount['mushrooms']).toBe(FILL_ME_IN);
+});
+
+    expect(ingredientCount['mushrooms']).toBe();
   });
 
   /*********************************************************************************/
